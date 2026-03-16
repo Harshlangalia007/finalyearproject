@@ -1,17 +1,29 @@
-{% extends "base.html" %} {% block content %}
-<div class="auth-wrapper">
-    <div class="auth-card">
+{% extends "base.html" %}
+
+{% block body_class %}landing-body{% endblock %}
+
+{% block content %}
+<section class="auth-page-shell">
+    <div class="auth-hero-panel">
         <div class="auth-sidebar">
-            <h2>Join Us!</h2>
+            <p class="hero-kicker">New account</p>
+            <h2>Create your workspace and start using the AI tools.</h2>
             <p>
-                Create an account today to unlock powerful, AI-driven
-                productivity solutions.
+                Set up your account to manage meetings, email workflows, and
+                follow-up tasks from one place.
             </p>
+            <ul class="auth-feature-list">
+                <li>Get a unified home for productivity workflows.</li>
+                <li>Start capturing meeting insights immediately.</li>
+                <li>Use AI-assisted email handling after sign-up.</li>
+            </ul>
         </div>
         <div class="auth-form-container">
+            <p class="hero-kicker">Quick setup</p>
             <h2>Create an Account</h2>
             <form method="post">
-                {% csrf_token %} {{ form.as_p }}
+                {% csrf_token %}
+                {{ form.as_p }}
                 <button type="submit" class="btn-auth">Register</button>
             </form>
             <div class="auth-links">
@@ -22,5 +34,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

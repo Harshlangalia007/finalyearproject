@@ -1,17 +1,29 @@
-{% extends "base.html" %} {% block content %}
-<div class="auth-wrapper">
-    <div class="auth-card">
+{% extends "base.html" %}
+
+{% block body_class %}landing-body{% endblock %}
+
+{% block content %}
+<section class="auth-page-shell">
+    <div class="auth-hero-panel">
         <div class="auth-sidebar">
-            <h2>Welcome Back!</h2>
+            <p class="hero-kicker">Welcome back</p>
+            <h2>Sign in and continue where your workflow left off.</h2>
             <p>
-                Sign in to access your dashboard, meetings, and AI productivity
-                tools.
+                Access your meeting summaries, email tools, and account
+                dashboard from the same workspace.
             </p>
+            <ul class="auth-feature-list">
+                <li>Review meeting updates in one place.</li>
+                <li>Open the email assistant without switching tools.</li>
+                <li>Keep follow-ups and productivity flows connected.</li>
+            </ul>
         </div>
         <div class="auth-form-container">
+            <p class="hero-kicker">Account access</p>
             <h2>Log In to Your Account</h2>
             <form method="post">
-                {% csrf_token %} {{ form.as_p }}
+                {% csrf_token %}
+                {{ form.as_p }}
                 <button type="submit" class="btn-auth">Log In</button>
             </form>
             <div class="auth-links">
@@ -22,5 +34,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
