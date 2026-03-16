@@ -1,0 +1,12 @@
+Django>=5.0
+mysqlclient
+SpeechRecognition
+pydub
+ffmpeg-python
+groq
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+requests
+python-dotenv

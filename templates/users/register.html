@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-sidebar">
+            <h2>Join Us!</h2>
+            <p>
+                Create an account today to unlock powerful, AI-driven
+                productivity solutions.
+            </p>
+        </div>
+        <div class="auth-form-container">
+            <h2>Create an Account</h2>
+            <form method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit" class="btn-auth">Register</button>
+            </form>
+            <div class="auth-links">
+                <p>
+                    Already have an account?
+                    <a href="/accounts/login/">Log in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
