@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block body_class %}landing-body{% endblock %}
+
+{% block content %}
+<section class="auth-page-shell">
+    <div class="auth-hero-panel">
+        <div class="auth-sidebar">
+            <p class="hero-kicker">Profile</p>
+            <h2>Your account details stay connected to your meeting workflow.</h2>
+            <p>
+                Review the signed-in account and keep navigation simple while
+                working across meetings and email tools.
+            </p>
+        </div>
+        <div class="auth-form-container">
+            <p class="hero-kicker">Account info</p>
+            <h2>Profile</h2>
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+            <p><strong>Email:</strong> {{ request.user.email|default:"Not set" }}</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

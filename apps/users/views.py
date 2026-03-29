@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 
@@ -10,8 +11,18 @@ def register_view(request):
             user = form.save()
             # Automatically log the user in after registration
             login(request, user)
-            return redirect("/")  # Redirect to homepage
+            return redirect("/meetings")  # Redirect to homepage
     else:
         form = UserCreationForm()
 
     return render(request, "users/register.html", {"form": form})
+
+
+@login_required
+def profile_view(request):
+    return render(request, "users/profile.html")
+
+
+@login_required
+def settings_view(request):
+    return render(request, "users/settings.html")
