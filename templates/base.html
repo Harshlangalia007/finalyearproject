@@ -12,16 +12,17 @@
         />
         <link
             rel="stylesheet"
-            href="{% static 'css/style.css' %}?v=20260319-meetings-ui"
+            href="{% static 'css/style.css' %}?v=20260330-auth-sidebar"
         />
     </head>
-    <body class="{% block body_class %}{% endblock %}">
+    <body
+        class="{% block body_class %}{% endblock %}{% if request.user.is_authenticated %} app-with-sidebar{% endif %}"
+    >
         <header class="landing-shell app-shell">
             <nav class="landing-nav">
                 <a class="landing-brand" href="/">Meetings AI</a>
                 <div class="landing-nav-links">
-                    <a href="/meetings/">Meetings</a>
-                    <a href="/email/">Email AI</a>
+                    <a href="/dashboard/">Dashboard</a>
                     {% if request.user.is_authenticated %}
                     <a
                         href="/users/settings/"
@@ -68,8 +69,46 @@
                 </div>
             </nav>
         </header>
+        {% if request.user.is_authenticated %}
+        <aside class="app-sidebar" aria-label="Primary navigation">
+            <a href="/meetings/" class="app-sidebar-link" aria-label="Meetings">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Meetings</span>
+            </a>
+            <a href="/email/" class="app-sidebar-link" aria-label="Email AI">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>Email AI</span>
+            </a>
+        </aside>
+        {% endif %}
         <main class="app-content">{% block content %}{% endblock %}</main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="{% static 'js/main.js' %}?v=20260319-meetings-ui"></script>
+        <script src="{% static 'js/main.js' %}?v=20260330-auth-sidebar"></script>
     </body>
 </html>
