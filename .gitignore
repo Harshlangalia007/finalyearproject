@@ -13,6 +13,10 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*$py.class
+
+# Keep Django migrations tracked.
+# Only cache files inside migrations should be ignored via the rules above.
 
 # Setup scripts
 bootstrap.py
